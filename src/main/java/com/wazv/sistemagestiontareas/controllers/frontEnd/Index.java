@@ -35,7 +35,7 @@ public class Index {
             model.addAttribute("idUsuario", id);
             model.addAttribute("urlImagen", principal.getAttribute("picture"));
         }
-        model.addAttribute("title", "Landing");
+        model.addAttribute("title", "Sistema-gestión-tareas");
         return "index";
     }
 }
