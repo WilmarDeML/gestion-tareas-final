@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="partials/head">
+<body>
+<div sec:authorize="isAuthenticated()" class="alert alert-success btn-lg px-4 gap-3 text-center">
+    <h4 th:text="'Bienvenid@ ' + ${name}"></h4>
+    <figure>
+        <img th:src="${urlImagen}" class="img-fluid mi-imagen" alt="Imagen Usuario">
+    </figure>
+    <a th:href="@{/logout}" class="btn btn-warning btn-lg px-4 gap-3">Cerrar sesión</a>
+</div>
+<main>
+    <div class="px-4 py-5 my5 text-center">
+        <img src="https://cdn2.iconfinder.com/data/icons/project-management-outline-1/60/Deliverable-Management-tasks-cog-gear-256.png" alt="logo"
+             class="d-block mx-auto mb-4">
+        <h1 class="display-5 fw-bold">Gestión de tareas</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">¡Esté al tanto de sus actividades y tareas!</p>
+            <a sec:authorize="!isAuthenticated()"
+               th:href="@{/oauth2/authorization/auth0}"
+               class="btn btn-primary btn-lg px-4 gap-3">
+                Iniciar sesión
+            </a>
+            <a sec:authorize="isAuthenticated()"
+               th:href="@{/tasks/{id}(id=${idUsuario})}"
+               class="btn btn-primary btn-lg px-4 gap-3">
+                Ir a la aplicación
+            </a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

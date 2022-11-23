@@ -1,0 +1,40 @@
+<div th:fragment="formTask" class="col-8">
+    <h1 class="text-center text-primary my-2" th:text="${tituloPrincipal}"></h1>
+    <div>
+        <form class="form" th:object="${task}" th:method="${method}"
+              th:action="${method} == 'POST' ? @{/tasks/} + ${idUsuario} + @{/nueva} : @{/tasks/} + ${idUsuario} + @{/editar/{id}(id=*{id})}">
+
+            <div class="form-floating mt-3">
+                <input id="titleInput" type="text" th:field="*{title}" class="form-control" placeholder="Digita el título de la tarea..." required>
+                <label for="titleInput">Título</label>
+            </div>
+
+            <div class="form-floating mt-3">
+                <input id="descriptionInput" type="text" th:field="*{description}" class="form-control" placeholder="Digita una descripción..." required>
+                <label for="descriptionInput">Descripción</label>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="states" class="mt-3">Estado</label>
+                    <div th:each="state : ${states}" class="form-check form-switch mt-3" id="states">
+                        <input type="radio" class="form-check-input form-check-inline" role="switch"
+                               th:id="${state}"
+                               th:value="${state}"
+                               th:field="*{state}"
+                               required
+                        />
+                        <label th:for="${state}" class="form-check-label" th:text="${state}"></label>
+                    </div>
+                </div>
+            </div>
+            <!--    <div class="col-6">
+                    <label for="states1" class="mt-3">Estado select</label>
+                    <select th:field="*{state}" class="form-select mt-3" id="states1">
+                        <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
+                    </select>
+                </div>
+            </div>-->
+            <button type="submit" class="btn btn-success mt-3 float-right" th:text="${accion}"></button>
+        </form>
+    </div>
+</div>
