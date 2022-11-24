@@ -25,17 +25,23 @@ public class Index {
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         System.out.println("----------Entrooooooooooooooooó------------------");
-        if (principal != null) {
-            String id = principal.getAttribute("sid");
-            Optional<User> user = userService.getById(id);
-            if ( user.isEmpty()) {
-                userService.createUser(principal.getClaims());
+        try {
+            if (principal != null) {
+                String id = principal.getAttribute("sid");
+                Optional<User> user = userService.getById(id);
+                if ( user.isEmpty()) {
+                    System.out.println("Entro 2-------------------------------------------");
+                    userService.createUser(principal.getClaims());
+                }
+                model.addAttribute("name", principal.getAttribute("nickname"));
+                model.addAttribute("idUsuario", id);
+                model.addAttribute("urlImagen", principal.getAttribute("picture"));
             }
-            model.addAttribute("name", principal.getAttribute("nickname"));
-            model.addAttribute("idUsuario", id);
-            model.addAttribute("urlImagen", principal.getAttribute("picture"));
+            model.addAttribute("title", "Sistema-gestión-tareas");
+            return "index";
+        } catch (Exception e) {
+            System.out.println("Errrrrooooorrrrrrrrr:" + e.getMessage());
+            return "index";
         }
-        model.addAttribute("title", "Sistema-gestión-tareas");
-        return "index";
     }
 }
