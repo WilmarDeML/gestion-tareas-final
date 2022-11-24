@@ -31,9 +31,9 @@ public class Index {
                 if ( user == null) {
                     user = userService.createUser(principal.getClaims(), idAuth0);
                 }
-                model.addAttribute("name", principal.getAttribute("nickname").toString());
-                model.addAttribute("idUsuario", idAuth0);
-                model.addAttribute("urlImagen", principal.getAttribute("picture").toString());
+                model.addAttribute("name", user.getEmail());
+                model.addAttribute("idUsuario", "iduniq".concat(user.getId()).concat("uniqId"));
+                model.addAttribute("urlImagen", user.getImage());
             }
             model.addAttribute("title", "Sistema-gestión-tareas");
             return "index";
