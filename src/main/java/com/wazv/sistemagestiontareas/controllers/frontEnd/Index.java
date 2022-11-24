@@ -32,7 +32,7 @@ public class Index {
                     user = userService.createUser(principal.getClaims(), idAuth0);
                 }
                 model.addAttribute("name", user.getEmail());
-                model.addAttribute("idUsuario", "iduniq".concat(user.getId()).concat("uniqId"));
+                model.addAttribute("idUsuario", user.getIdAuth0());
                 model.addAttribute("urlImagen", user.getImage());
             }
             model.addAttribute("title", "Sistema-gestión-tareas");
