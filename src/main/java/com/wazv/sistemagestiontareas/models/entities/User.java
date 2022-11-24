@@ -19,8 +19,8 @@ public class User {
 
     private String image;
 
-    @OneToOne(mappedBy = "user")
-    private Profile profile;
+    //@OneToOne(mappedBy = "user")
+    //private Profile profile;
 
     @JsonIgnoreProperties(value = {"user", "hibernateLazyInitializer", "handler"}, allowSetters = true)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
