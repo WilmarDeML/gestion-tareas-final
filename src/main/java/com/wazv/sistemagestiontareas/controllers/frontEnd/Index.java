@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +24,7 @@ public class Index {
 
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
+        System.out.println("----------Entrooooooooooooooooó------------------");
         if (principal != null) {
             String id = principal.getAttribute("sid");
             Optional<User> user = userService.getById(id);
