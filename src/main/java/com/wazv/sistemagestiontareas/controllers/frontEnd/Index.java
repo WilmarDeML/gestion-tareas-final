@@ -26,8 +26,8 @@ public class Index {
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         try {
             if (principal != null) {
-                System.out.println("----------Entrooooooooooooooooó------------------");
-                String id = principal.getAttribute("sid").toString();
+                String id = principal.getAttribute("sub").toString().substring(6);
+                System.out.println("----------Entrooooooooooooooooó------------------" + id);
                 Optional<User> user = userService.getById(id);
                 if ( user.isEmpty()) {
                     System.out.println("Entro 2-------------------------------------------");

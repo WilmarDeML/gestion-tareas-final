@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(Map<String, Object> userData) {
         User user = new User();
-        user.setId(userData.get("sid").toString());
+        user.setId(userData.get("sub").toString().substring(6));
         user.setEmail(userData.get("email").toString());
         user.setImage(userData.get("picture").toString());
         user.setUpdatedAt(new Date());
