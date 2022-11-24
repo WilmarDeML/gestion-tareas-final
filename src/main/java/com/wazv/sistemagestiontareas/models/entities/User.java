@@ -2,6 +2,7 @@ package com.wazv.sistemagestiontareas.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,7 +13,12 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
+
+    @Column(nullable = false, unique = true)
+    private String idAuth0;
 
     @Column(nullable = false, unique = true)
     private String email;

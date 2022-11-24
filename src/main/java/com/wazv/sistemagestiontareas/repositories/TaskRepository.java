@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, String> {
-    List<Task> findAllByUserId(String idUsuario);
+    List<Task> findAllByUserIdAuth0(String idUsuario);
 }

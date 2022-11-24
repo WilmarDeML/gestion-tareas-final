@@ -22,5 +22,5 @@ public interface TaskService {
 
     void create(Task task, String userId);
 
-    List<Task> getAllById(String idUsuario);
+    List<Task> getAllByIdUsuario(String idUsuario);
 }

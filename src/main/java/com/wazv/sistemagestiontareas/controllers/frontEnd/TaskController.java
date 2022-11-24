@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RequestMapping("tasks")
@@ -23,7 +22,7 @@ public class TaskController {
 
     @GetMapping("{idUsuario}")
     public String viewHome(Model model, @PathVariable String idUsuario) {
-        model.addAttribute("tasks", taskService.getAllById(idUsuario));
+        model.addAttribute("tasks", taskService.getAllByIdUsuario(idUsuario));
         model.addAttribute("title", "Tareas");
         model.addAttribute("idUsuario", idUsuario);
         return "tasks";

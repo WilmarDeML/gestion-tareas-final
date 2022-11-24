@@ -36,18 +36,23 @@ public class UserServiceImpl implements UserService {
     };
     
     public Boolean delete(String id) {
-        Boolean hadDeleted = getById(id).isEmpty();
+        Boolean hadDeleted = getByIdAuth0(id) != null;
         userRepository.deleteById(id);
         return hadDeleted;
     }
 
     @Override
-    public void createUser(Map<String, Object> userData) {
+    public User getByIdAuth0(String idAuth0) {
+        return userRepository.getByIdAuth0(idAuth0);
+    }
+
+    @Override
+    public User createUser(Map<String, Object> userData, String idAuth0) {
         User user = new User();
-        user.setId(userData.get("sub").toString().substring(6));
+        user.setIdAuth0(idAuth0);
         user.setEmail(userData.get("email").toString());
         user.setImage(userData.get("picture").toString());
         user.setUpdatedAt(new Date());
-        save(user);
+        return save(user);
     };
 }

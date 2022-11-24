@@ -41,20 +41,20 @@ public class TaskServiceImpl implements TaskService {
     }
     
     public Boolean delete(String id) {
-        Boolean hadDeleted =getById(id).getId().isEmpty();
+        Boolean hadDeleted = !getById(id).getId().isEmpty();
         taskRepository.deleteById(id);
         return hadDeleted;
     }
 
     @Override
     public void create(Task task, String userId) {
-        User user = userService.getById(userId).get();
+        User user = userService.getByIdAuth0(userId);
         task.setUser(user);
         save(task);
     }
 
     @Override
-    public List<Task> getAllById(String idUsuario) {
-        return taskRepository.findAllByUserId(idUsuario);
+    public List<Task> getAllByIdUsuario(String idUsuario) {
+        return taskRepository.findAllByUserIdAuth0(idUsuario);
     }
 }
