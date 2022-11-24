@@ -27,15 +27,15 @@ public class Index {
         System.out.println("----------Entrooooooooooooooooó------------------");
         try {
             if (principal != null) {
-                String id = principal.getAttribute("sid");
+                String id = principal.getAttribute("sid").toString();
                 Optional<User> user = userService.getById(id);
                 if ( user.isEmpty()) {
                     System.out.println("Entro 2-------------------------------------------");
                     userService.createUser(principal.getClaims());
                 }
-                model.addAttribute("name", principal.getAttribute("nickname"));
+                model.addAttribute("name", principal.getAttribute("nickname").toString());
                 model.addAttribute("idUsuario", id);
-                model.addAttribute("urlImagen", principal.getAttribute("picture"));
+                model.addAttribute("urlImagen", principal.getAttribute("picture").toString());
             }
             model.addAttribute("title", "Sistema-gestión-tareas");
             return "index";
