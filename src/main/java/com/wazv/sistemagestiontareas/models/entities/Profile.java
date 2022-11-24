@@ -17,7 +17,9 @@ public class Profile {
 
     private String phone;
 
-    @OneToOne(mappedBy = "profile")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
     private User user;
 
     @Temporal(TemporalType.DATE)

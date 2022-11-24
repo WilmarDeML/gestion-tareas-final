@@ -19,8 +19,7 @@ public class User {
 
     private String image;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "id")
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
     @JsonIgnoreProperties(value = {"user", "hibernateLazyInitializer", "handler"}, allowSetters = true)
