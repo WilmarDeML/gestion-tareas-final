@@ -24,9 +24,9 @@ public class Index {
 
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
-        System.out.println("----------Entrooooooooooooooooó------------------");
         try {
             if (principal != null) {
+                System.out.println("----------Entrooooooooooooooooó------------------");
                 String id = principal.getAttribute("sid").toString();
                 Optional<User> user = userService.getById(id);
                 if ( user.isEmpty()) {
