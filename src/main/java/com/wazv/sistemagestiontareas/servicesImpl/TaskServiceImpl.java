@@ -55,6 +55,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> getAllByIdUsuario(String idUsuario) {
-        return taskRepository.findAllByUserIdAuth0(idUsuario);
+        return taskRepository.findAllByUserId(idUsuario);
     }
 }
