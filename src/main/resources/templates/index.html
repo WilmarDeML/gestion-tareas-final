@@ -3,9 +3,9 @@
 <head th:replace="partials/head">
 <body>
 <div sec:authorize="isAuthenticated()" class="alert alert-success btn-lg px-4 gap-3 text-center">
-    <h4 th:text="'Bienvenid@ ' + ${profile.get('name')}"></h4>
+    <h4 th:text="'Bienvenid@ ' + ${name}"></h4>
     <figure>
-        <img th:src="${profile.get('picture')}" class="img-fluid mi-imagen" alt="Imagen Usuario">
+        <img th:src="${urlImagen}" class="img-fluid mi-imagen" alt="Imagen Usuario">
     </figure>
     <a th:href="@{/logout}" class="btn btn-warning btn-lg px-4 gap-3">Cerrar sesión</a>
 </div>
