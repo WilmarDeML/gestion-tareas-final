@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base::head">
+<body>
+  <div class="container mt-5 text-center">
+      <div class="alert alert-danger">
+        <h4 th:text="${mensaje}"></h4>
+        <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678069-sign-error-256.png" alt="">
+      </div>
+      <div class="text-center mt-3">
+        <a th:href="@{/}" class="btn btn-warning">Home</a>
+      </div>
+  </div>
+</body>
+</html>

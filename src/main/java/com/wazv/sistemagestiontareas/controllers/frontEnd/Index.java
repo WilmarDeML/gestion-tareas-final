@@ -41,7 +41,8 @@ public class Index {
             model.addAttribute("title", "Sistema-gestión-tareas");
             return "index";
         } catch (Exception e) {
-            return "index";
+            model.addAttribute("mensaje", e.getMessage());
+            return "error";
         }
     }
 }
