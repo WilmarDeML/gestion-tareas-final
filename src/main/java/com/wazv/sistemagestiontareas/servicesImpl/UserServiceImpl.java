@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByIdAuth0(String idAuth0) {
-        return userRepository.getByIdAuth0(idAuth0);
+        return userRepository.getByIdAuth0(idAuth0).get();
     }
 
     @Override
