@@ -27,8 +27,8 @@ public class Index {
         try {
             if (principal != null) {
                 String idAuth0 = principal.getClaimAsString("sub").substring(6);
-                System.out.println("idAuth0: " + idAuth0 + "-----------------------------------------------");
                 User user = userService.getByIdAuth0(idAuth0);
+                System.out.println("idAuth0: " + idAuth0 + "-----------------------------------------------" + user);
                 if ( user == null) {
                     user = userService.createUser(principal.getClaims());
                 }
