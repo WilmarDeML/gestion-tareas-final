@@ -48,13 +48,13 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void create(Task task, String userId) {
-        User user = userService.getByIdAuth0(userId);
+        User user = userService.getByAuth0(userId);
         task.setUser(user);
         save(task);
     }
 
     @Override
     public List<Task> getAllByIdUsuario(String idUsuario) {
-        return taskRepository.findAllByUserIdAuth0(idUsuario);
+        return taskRepository.findAllByUserAuth0(idUsuario);
     }
 }

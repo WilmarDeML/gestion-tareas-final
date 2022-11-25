@@ -22,7 +22,7 @@ public interface UserService {
     
     Boolean delete(String id);
 
-    User getByIdAuth0(String idAuth0);
+    User getByAuth0(String auth0);
 
     User createUser(Map<String, Object> userData);
 }

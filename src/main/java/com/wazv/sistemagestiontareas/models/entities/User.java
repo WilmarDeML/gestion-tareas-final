@@ -18,7 +18,7 @@ public class User {
     private String id;
 
     @Column(nullable = false, unique = true)
-    private String idAuth0;
+    private String auth0;
 
     @Column(nullable = false, unique = true)
     private String email;

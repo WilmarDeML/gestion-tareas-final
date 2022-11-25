@@ -26,16 +26,16 @@ public class Index {
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         try {
             if (principal != null) {
-                String idAuth0 = principal.getClaimAsString("sub").substring(6);
-                User user = userService.getByIdAuth0(idAuth0);
-                System.out.println("idAuth0: " + idAuth0 + "-----------------------------------------------" + user);
+                String auth0 = principal.getClaimAsString("sub").substring(6);
+                User user = userService.getByAuth0(auth0);
+                System.out.println("auth0: " + auth0 + "-----------------------------------------------" + user);
                 if ( user == null) {
                     user = userService.createUser(principal.getClaims());
                 }
                 model.addAttribute("profile", principal.getClaims());
-                model.addAttribute("idUsuario", idAuth0);
+                model.addAttribute("idUsuario", auth0);
                 /*model.addAttribute("name", user.getEmail());
-                model.addAttribute("idUsuario", user.getIdAuth0());
+                model.addAttribute("idUsuario", user.getAuth0());
                 model.addAttribute("urlImagen", user.getImage());*/
             }
             model.addAttribute("title", "Sistema-gestión-tareas");
