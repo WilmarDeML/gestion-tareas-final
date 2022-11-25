@@ -41,7 +41,7 @@ public class Index {
             model.addAttribute("title", "Sistema-gestión-tareas");
             return "index";
         } catch (Exception e) {
-            model.addAttribute("mensaje", e.getMessage());
+            model.addAttribute("mensaje", e.getMessage() != null ? e.getMessage() : "Intente más tarde Ocurrió un error ".concat(e.getLocalizedMessage()));
             return "error";
         }
     }
