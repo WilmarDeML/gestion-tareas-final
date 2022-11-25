@@ -25,6 +25,7 @@ public class Index {
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal OidcUser principal) {
         String auth0 = "";
+        model.addAttribute("title", "Sistema-gestión-tareas");
         try {
             if (principal != null) {
                 auth0 = principal.getClaimAsString("sub").substring(6);
@@ -35,8 +36,8 @@ public class Index {
                 model.addAttribute("idUsuario", auth0);
                 model.addAttribute("name", user.getEmail());
                 model.addAttribute("urlImagen", user.getImage());
+                return "redirect:/home/".concat(auth0);
             }
-            model.addAttribute("title", "Sistema-gestión-tareas");
             return "index";
         } catch (Exception e) {
             model.addAttribute("idUsuario", auth0);
